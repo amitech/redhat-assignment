@@ -56,6 +56,26 @@ $ python3 dockerfile_scanner.py https://gist.githubusercontent.com/jmelis/c60e61
   }
 }
 
+# First line format is incorrect, it will skip that line
+$ python3 dockerfile_scanner.py https://test1.amitech.me/sources.txt
+2021-11-07 18:20:20,081 - WARNING - Invalid Github URL and/or SHA. Skipping for line https://github.com/app-sre/qontract-reconcile.git
+{
+  "data": {
+    "https://github.com/app-sre/container-images.git:c260deaf135fc0efaab365ea234a5b86b3ead404": {
+      "jiralert/Dockerfile": [
+        "registry.access.redhat.com/ubi8/go-toolset:latest",
+        "registry.access.redhat.com/ubi8-minimal:8.2"
+      ],
+      "qontract-reconcile-base/Dockerfile": [
+        "registry.access.redhat.com/ubi8/ubi:8.2",
+        "registry.access.redhat.com/ubi8/ubi:8.2",
+        "registry.access.redhat.com/ubi8/ubi:8.2"
+      ]
+    }
+  }
+}
+
+
 ```
 
 ## Build Docker Image -

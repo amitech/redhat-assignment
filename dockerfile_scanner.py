@@ -111,6 +111,8 @@ def main():
 
     for line in response.iter_lines():
         line_decoded = line.decode()
+
+        # Check whether provided format in url is correct, else skip that line
         if validate_github(line_decoded):
             github_url = line_decoded.split()[0]
             github_sha = line_decoded.split()[1]
@@ -123,6 +125,8 @@ def main():
             logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
                                 level=logging.WARNING)
             logging.warning("Invalid Github URL and/or SHA. Skipping for line %s", line_decoded)
+
+    # Dump final JSON
     print(json.dumps(output, indent=2))
 
 if __name__ == '__main__':
